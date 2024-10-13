@@ -16,7 +16,7 @@ Then:
 ```bash
 docker run -d --name=bitcoin-core-gui -p 5800:5800 -v /YourHostPath:/config bitcoin-core-gui:27.0-debian12
 ```
-then go to your docker IP:5800 to see the VNC web UI and wathch your v27 bitcoin wallet/node sync...
+then go to your docker IP:5800 to see the VNC web UI and watch your v27 bitcoin wallet/node sync...
 
 Thank you Old Info Saved from Fork.
 # Docker - Bitcoin Core GUI client
