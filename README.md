@@ -1,3 +1,15 @@
+To Do: Turn into a public Docker image to pull now.
+? May add tor / i2pd...
+
+#ATM: Workin debain 12 instance and bitcoin v27
+
+git clone https://github.com/bmartino1/Docker-Bitcoin-Core-GUI.git
+cd Docker-Bitcoin-Core-GUI
+docker build -t bitcoin-core-gui:27.0-debian12 .
+docker run -d --name=bitcoin-core-gui -p 5800:5800 -v /YourHostPath:/config bitcoin-core-gui:27.0-debian12
+then go to your docker IP:5880 to see the VNC web UI and wathch your v27 bitcoin wallet/node sync...
+
+Thank you Old Info Saved from Fork.
 # Docker - Bitcoin Core GUI client
 
 Run the Bitcoin Core GUI wallet on a Docker container, accesible via web browser and VNC.
@@ -45,7 +57,7 @@ VNC/webui related settings, such as securing the connection and so on.
 - 0.1.1 - Add Bitcoin logo as container favicon
 - 0.0.1 - Initial release
 
-## TODO
+##Forked TODO dead since 2020...
 
 - Automate getting the latest Bitcoin Core version,
 - Download Bitcoin Core from torrent (using aria2) for faster download speed - or other alternative repository?
