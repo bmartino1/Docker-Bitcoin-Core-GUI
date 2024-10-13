@@ -15,6 +15,8 @@ FROM jlesage/baseimage-gui:debian-12-v4.6.4
 ARG APP_ICON="https://bitcoin.org/img/icons/opengraph.png"
 ENV APP_NAME="BitcoinCoreGUI"
 
+RUN apt-get -yq update && apt-get -yq install libfontconfig1 libxcb1 libxrender1
+
 RUN install_app_icon.sh "${APP_ICON}"
 
 COPY --from=download /bitcoin-27.0/bin/bitcoin-qt /usr/local/bin/
