@@ -35,7 +35,7 @@ RUN apt-get -yq update && apt-get -yq install \
     libboost-system-dev \
     libboost-test-dev \
     libboost-thread-dev \
-    libqt4-dev \
+    qtbase5-dev \
     libprotobuf-dev \
     protobuf-compiler \
     libqrencode-dev \
