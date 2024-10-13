@@ -1,3 +1,14 @@
+# # # Stage 1 # # #
+# Download bitcoin-core
+FROM jlesage/baseimage-gui:debian-12-v4.6.4 AS download
+ARG DOWNLOAD_URL="https://bitcoin.org/bin/bitcoin-core-27.0/bitcoin-27.0-x86_64-linux-gnu.tar.gz"
+
+RUN apt-get -yq update && apt-get -yq install curl
+
+WORKDIR /
+RUN curl "${DOWNLOAD_URL}" --output "bitcoin-core.tar.gz"
+RUN tar -xzf "bitcoin-core.tar.gz"
+
 # # # Stage 2 # # #
 # Setup the final image
 FROM jlesage/baseimage-gui:debian-12-v4.6.4
@@ -49,9 +60,5 @@ RUN echo '#!/bin/sh' > /startapp.sh && \
     echo 'export HOME=/config' >> /startapp.sh && \
     echo 'exec bitcoin-qt' >> /startapp.sh && \
     chmod +x /startapp.sh
-
-# Enable automated security updates
-RUN apt-get -yq install unattended-upgrades && \
-    dpkg-reconfigure --frontend=noninteractive unattended-upgrades
 
 VOLUME /config
