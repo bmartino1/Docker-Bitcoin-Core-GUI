@@ -20,5 +20,11 @@ RUN install_app_icon.sh "${APP_ICON}"
 COPY --from=download /bitcoin-27.0/bin/bitcoin-qt /usr/local/bin/
 RUN chmod +x /usr/local/bin/bitcoin-qt
 
-COPY startapp.sh /startapp.sh
+# Create startapp.sh script and make it executable
+RUN echo '#!/bin/sh' > /startapp.sh && \
+    echo 'set -ex' >> /startapp.sh && \
+    echo 'export HOME=/config' >> /startapp.sh && \
+    echo 'exec bitcoin-qt' >> /startapp.sh && \
+    chmod +x /startapp.sh
+
 VOLUME /config
