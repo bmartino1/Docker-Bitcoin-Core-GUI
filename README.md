@@ -1,5 +1,5 @@
 # ATM: Working debain 12 instance and bitcoin v27
-This has been forked and edited to meet my needs. Your needs may be different. This is not my work but expanded upon to make a working instance for myself. You are free to edit and make changes as long as you follow the orginal creators license.
+This has been forked and updated/edited to meet my needs. Your needs may be different. This is not my work but expanded upon to make a working instance for myself. You are free to edit and make changes as long as you follow the orginal creators license.
 
 docker pull bmmbmm01/bitcoin-core-gui:27.0-debian12
 or
@@ -11,8 +11,6 @@ Then:
 docker run -d --name=bitcoin-core-gui -p 5800:5800 -v /YourHostPath:/config bitcoin-core-gui:27.0-debian12
 
 then go to your docker IP:5880 to see the VNC web UI and wathch your v27 bitcoin wallet/node sync...
-
-To Do: ? May add tor / i2pd...
 
 Thank you Old Info Saved from Fork.
 # Docker - Bitcoin Core GUI client
