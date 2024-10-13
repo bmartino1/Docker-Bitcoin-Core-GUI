@@ -1,7 +1,8 @@
 .DEFAULT_GOAL := help
 
-IMAGE_TAG := "bitcoin-core-gui"
-DOWNLOAD_URL := "https://bitcoin.org/bin/bitcoin-core-0.19.1/bitcoin-0.19.1-x86_64-linux-gnu.tar.gz"
+# Update to Bitcoin Core 27.0 and Debian 12
+IMAGE_TAG := "bitcoin-core-gui:27.0-debian12"
+DOWNLOAD_URL := "https://bitcoin.org/bin/bitcoin-core-27.0/bitcoin-27.0-x86_64-linux-gnu.tar.gz"
 
 build: ## build the image
 	docker build . -t ${IMAGE_TAG} \
