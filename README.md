@@ -1,12 +1,13 @@
-# ATM: Working debain 12 instance and bitcoin v27
-This has been forked and updated/edited to meet my needs. Your needs may be different. This is not my work but expanded upon to make a working instance for myself. You are free to edit and make changes as long as you follow the orginal creators license.
+# ATM: This is a Working Debian 12 Instance and Bitcoin v27
 
+This has been forked and updated/edited to meet my needs. Your needs may be different. This is not entirely my work, but I have expanded upon it to create a working instance for myself. You are free to edit and make changes as long as you follow the original creator's license.
+
+This is my first Docker Hub Image:
 ```bash
 docker pull bmmbmm01/bitcoin-core-gui:27.0-debian12
 ```
 
-or
-
+Otherwise make it yourself from this Repo:
 ```bash
 git clone https://github.com/bmartino1/Docker-Bitcoin-Core-GUI.git
 cd Docker-Bitcoin-Core-GUI
@@ -16,17 +17,14 @@ Then:
 ```bash
 docker run -d --name=bitcoin-core-gui -p 5800:5800 -v /YourHostPath:/config bitcoin-core-gui:27.0-debian12
 ```
-then go to your docker IP:5800 to see the VNC web UI and watch your v27 bitcoin wallet/node sync...
 
-Thank you Old Info Saved from Fork.
-# Docker - Bitcoin Core GUI client
+Then go to your Docker IP:5800 to see the VNC web UI and watch your v27 Bitcoin wallet/node sync.
 
-Run the Bitcoin Core GUI wallet on a Docker container, accesible via web browser and VNC.
-Built over the [jlesage/docker-baseimage-gui](https://github.com/jlesage/docker-baseimage-gui) image (debian-9 version).
+# Docker - Bitcoin Core GUI Client
 
-**This image is experimental and might have undesirable effects. Use it under your responsability!**
+Run the Bitcoin Core GUI wallet in a Docker container, accessible via a web browser and VNC. Built over the [jlesage/docker-baseimage-gui](https://github.com/jlesage/docker-baseimage-gui) image (Debian 12 version).
 
-## Getting started
+## Getting Started Docker run commands options
 
 ```bash
 docker volume create --name=bitcoin-data
@@ -35,15 +33,15 @@ docker run -d --name=bitcoin-core-gui -p 5800:5800 -v bitcoin-data:/config david
 
 Open your browser and go to `localhost:5800`. You should see the Bitcoin Core GUI application running!
 
-**On the first run, the Welcome window will open, where you will be prompted for the data location.
-You should set it to somewhere inside `/config`** (by default, is set to `/config/.bitcoin`)
+**On the first run, the Welcome window will open, where you will be prompted for the data location!
+You should set it to somewhere inside `/config`** (by default, it is set to `/config/.bitcoin`).
 
-## Volume (persistence)
+## Volume (Persistence)
 
 The Bitcoin Core data directory is set to `/config/.bitcoin` by default. A volume is created for `/config`,
-but you might want to mount the `/config/.bitcoin` directory on other volume or a bind mount.
+but you might want to mount the `/config/.bitcoin` directory on another volume or bind mount.
 
-You can even mount sub-directories of the Bitcoin data directory. These are the most important::
+You can even mount subdirectories of the Bitcoin data directory. These are the most important:
 - `/config/.bitcoin/blocks` for the blockchain
 - `/config/.bitcoin/wallet.dat` for your wallet
 - `/config/.bitcoin/bitcoin.conf` for the client configuration
@@ -53,24 +51,16 @@ _The `/config` directory is used by the [base image for persisting settings](htt
 of the image tools and the application running. We set it as the HOME directory, so this results in bitcoin-qt
 setting the data directory to `/config/.bitcoin` by default._
 
-## Other settings
+## Other Settings
 
 Please refer to the [documentation of the base image](https://github.com/jlesage/docker-baseimage-gui) for
-VNC/webui related settings, such as securing the connection and so on.
+VNC/web UI related settings, such as securing the connection and other configurations.
 
-## Changelog
+## Running the Container
 
-- 0.3.1 - Revert "compile" in Dockerfile (since the compiled official releases already included ZeroMQ).
-          The "compiled version" is kept on the [feature/compile branch](https://github.com/David-Lor/Docker-Bitcoin-Core-GUI/tree/feature/compile).
-- 0.2.1 - Compile Bitcoin Core QT on Dockerfile, adding support for ZeroMQ. Add volume in Dockerfile.
-- 0.1.1 - Add Bitcoin logo as container favicon
-- 0.0.1 - Initial release
+To start the container, use the following command:
 
-## Forked TODO dead since 2020...
-
-- Automate getting the latest Bitcoin Core version,
-- Download Bitcoin Core from torrent (using aria2) for faster download speed - or other alternative repository?
-- SquashFS + OverlayFS support for blockchain compression
-- Multi-arch support
-- ~~Do not ask for data location on first client start~~ (0.2.1): now we set the HOME directory to /config, so the default
-  data dir is `/config/.bitcoin`. Is better to keep the Welcome window for the first time the container + volume start.
+```bash
+# Run the container
+docker run -d --name bitcoin-core-gui bitcoin-core-gui:27.0-debian12
+```
